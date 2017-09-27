@@ -1,0 +1,5 @@
+{
+    "hostAddress": "localhost",
+    "serverPort": 8080,
+    "mongodbUrl": "mongodb://localhost/crud"
+}
