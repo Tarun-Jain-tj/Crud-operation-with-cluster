@@ -6,12 +6,24 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "async": "^2.5.0",
+    "bcryptjs": "^2.2.1",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
     "cluster": "^0.7.7",
     "config": "^1.25.1",
     "cors": "^2.8.1",
+    "crypto": "0.0.3",
+    "ews-javascript-api": "^0.5.2",
     "express": "^4.15.2",
-    "mongoose": "^4.8.6"
+    "httpntlm": "^1.6.1",
+    "json-stringify-safe": "^5.0.1",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.8.6",
+    "pitstop": "^0.2.1",
+    "route-pattern": "0.0.6",
+    "underscore": "^1.8.3",
+    "winston": "^1.0.1",
+    "wrench": "^1.5.8"
   }
 }

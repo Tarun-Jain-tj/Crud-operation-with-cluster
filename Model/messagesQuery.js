@@ -1,11 +1,24 @@
-var messagesModel = require('./messageModel');
-var messagesQuery = {};
+var schema = require('./messageModel');
+var model = {};
 var Promise = require('bluebird');
 //get the messages read
-messagesQuery.findAnyField = function (query, reteriveOnly) {
+model.findAnyField = function (query, reteriveOnly) {
     console.log('findAnyField');
     return new Promise(function (resolve, reject) {
-        messagesModel.find(query, reteriveOnly, function (err, data) {
+        schema.messageModel.find(query, reteriveOnly, function (err, data) {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(data)
+            }
+        });
+    });
+};
+
+model.getAllFeilds = function () {
+    console.log('findAnyField');
+    return new Promise(function (resolve, reject) {
+        schema.messageModel.find({}, function (err, data) {
             if (err) {
                 reject(err);
             } else {
@@ -16,19 +29,36 @@ messagesQuery.findAnyField = function (query, reteriveOnly) {
 };
 
 //save the messages create
-messagesQuery.addData = function (data) {
-    return messagesModel(data).save();
+model.addData = function (data, cb) {
+    return new schema.messageModel(
+        {
+            "message": data.message
+        }).save(function (err, result) {
+
+            if (result) {
+                cb(null, result);
+            }
+            else {
+                cb(err);
+            }
+        });//call back in save function
+    //return schema(messageModel.data).save();
 };
 
 //update
-messagesQuery.updateAnyField = function (query, updateOnly) {
-    return messagesModel.update(query, updateOnly).exec();
+model.updateById = function (data, cb) {
+    return schema.messageModel.update({ "_id": data.id },
+        {
+            $set: {
+                "message": data.message
+            }
+        }, { upsert: true }, cb);
 };
 
 //delete 
-messagesQuery.removeAnyField = function (query) {
-    return messagesModel.remove(query).exec();
+model.removeFieldByID = function (data, cb) {
+    return schema.messageModel.remove({ "_id": data.id }).exec(cb);
 };
 
 
-module.exports = messagesQuery;
+module.exports = model;

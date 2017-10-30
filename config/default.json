@@ -1,5 +1,18 @@
 {
-    "hostAddress": "localhost",
-    "serverPort": 8080,
-    "mongodbUrl": "mongodb://localhost/crud"
+    //"hostAddress": "localhost",
+    // "serverPort": 8080,
+    //  "mongodbUrl": "mongodb://localhost/crud",
+    "server": {
+        "name": "Clocalhost Server",
+        "host": "localhost",
+        "port": 8080
+    },
+    "Path": {
+        "WhiteList_URLs": [
+            "/user/login" //like this
+        ]
+    },
+    "mongoDB": {
+        "url": "mongodb://localhost/crud"
+    }
 }
