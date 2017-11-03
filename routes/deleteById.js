@@ -1,5 +1,5 @@
 var Route = require('../libs/core/Route');
-var dataModel = require('../Model/messagesQuery');
+var dataModel = require('../Model/messageModel/messagesQuery');
 var constant = require('../constant/constant');
 var response = require('../constant/response');
 var Check = require('../libs/core/Check');

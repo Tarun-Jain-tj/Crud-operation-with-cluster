@@ -1,18 +1,32 @@
 ﻿//var mysql = require("mysql");
 var config = require("config");
 //var randomString=require('shortid');
-var mongoose =require('mongoose');
+var mongoose = require('mongoose');
 
 // First you need to create a connection to the mongo db
- var mongoDB = mongoose.connect(config.get("mongoDB.url"),function(error,cb){
+var option = {
+    server: {
+        socketOptions: {
+            keepAlive: 300000,
+            connectTimeoutMS: 30000
+        }
+    },
+    replset: {
+        socketOptions: {
+            keepAlive: 300000,
+            connectTimeoutMS: 30000
+        }
+    }
+};
+var mongoDB = mongoose.connect(config.get("mongoDB.url"), option, function (error, cb) {
 
-     if(error){
-         console.log(error);
-     }
-     else {
-         console.log("connected to db");
-     }
- });
+    if (error) {
+        console.log(error);
+    }
+    else {
+        console.log("connected to db");
+    }
+});
 
 //  /**
 //  * Run query for a page of results using skip and limit values.
@@ -77,14 +91,14 @@ var mongoose =require('mongoose');
     });
 }
 */
- 
+
 var dbUtils = {};
 
 /**
  * Returns Mongo DB driver instance
  * @return {mongoose}
  */
-dbUtils.getMongoDB = function(){
+dbUtils.getMongoDB = function () {
     return mongoDB;
 };
 module.exports = dbUtils;

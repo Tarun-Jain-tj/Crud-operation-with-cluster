@@ -2,7 +2,7 @@ var ApiException = require('../libs/core/ApiException');
 var apiErrors = require('../assets/api_errors');
 var lodash = require('lodash');
 var config = require('config');
-var model = require('../Model/messageModel');
+var model = require('../Model/messageModel/messageModel');
 var utils=require("./core/utility");
 // define module
 function authUtil(){}

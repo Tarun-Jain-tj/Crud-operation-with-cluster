@@ -1,5 +1,5 @@
 "use strict";
-var mongoose = require('../libs/dbUtils').getMongoDB();
+var mongoose = require('../../libs/dbUtils').getMongoDB();
 var Schema = mongoose.Schema;
 var schema = {};
 module.exports = schema
@@ -10,7 +10,8 @@ module.exports = schema
 
 var messageSchema = new Schema({
     message: String,
-    date: { type: Date, default: Date.now }
+    date: { type: Date, default: Date.now },
+    email: String
 });
 
 
